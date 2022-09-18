@@ -34,9 +34,9 @@ Allright! We learned some new cool stuff today. Got a first taste how Firebase c
 
 Here below you find our registration form with some input:
 
-![](public/Screenshot 2022-09-18 at 15.32.07.png)
+![screenshot input](public/Screenshot 2022-09-18 at 15.32.07.png)
 
 
 The result as it gets inserted in the Realtime Database from Firebase:
 
-![](public/Screenshot 2022-09-18 at 15.20.45.png)
+![screenshot firebase](public/Screenshot 2022-09-18 at 15.20.45.png)
