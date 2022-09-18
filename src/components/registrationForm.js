@@ -1,5 +1,8 @@
 import './style.css'
-import {useState} from 'React';
+import {useState} from 'react';
+import {database} from '../firebase'
+import {ref,push,child,update} from "firebase/database";
+
 
 function RegistrationForm() {
 
@@ -8,7 +11,6 @@ function RegistrationForm() {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState(null);
-
 
     // In this function you get the id and value entered inside the input box, the state of that field will get updated
 
@@ -31,7 +33,21 @@ function RegistrationForm() {
         }
 
     }
- 
+
+    const handleSubmit = () => {
+        let obj = {
+            firstName : firstName,
+            lastName:lastName,
+            email:email,
+            password:password,
+            confirmPassword:confirmPassword,
+        }
+        const newPostKey = push(child(ref(database), 'posts')).key;
+        const updates = {};
+        updates['/' + newPostKey] = obj
+        return update(ref(database), updates);
+    }
+
     return(
         <div className="form">
             <div className="form-body">
@@ -57,7 +73,7 @@ function RegistrationForm() {
                 </div>
             </div>
             <div className="footer">
-                <button type="submit" className="btn">Register</button>
+                <button onClick={handleSubmit} type="submit" className="btn">Register</button>
             </div>
         </div>
     )
